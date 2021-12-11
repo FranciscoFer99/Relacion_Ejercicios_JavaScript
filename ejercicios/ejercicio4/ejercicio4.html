@@ -1,0 +1,55 @@
+<!--Crear una página Web que pida un número entero positivo al usuario (no hace falta validad) 
+  y que devuelva el factorial de dicho número.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 4</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div id="formLogin" class="container bg-light my-5 py-4" style="width: 30%">
+    <form action="">
+      <label for="nomUsu" class="form-label">Numero:</label>
+      <input type="text" name="numero" id="Numero" class="form-control" placeholder="Introduce un número" />
+      <button type="submit" class="btn btn-success mt-1" id="enviar">
+        Entrar
+      </button>
+      <button type="submit" class="btn btn-outline-dark mt-1" id="limpiar">
+        Limpiar
+      </button>
+      <a href="../../index.html" class="btn btn-warning mt-1"> Volver</a>
+    </form>
+  </div>
+  <h1></h1>
+
+  <script>
+
+    document.getElementById("enviar").addEventListener("click", function (e) {
+      e.preventDefault();
+      titulo = document.getElementsByTagName("h1")[0];
+      numero = document.getElementById("Numero").value;
+      let f = factorial(numero);
+      titulo.innerText = `Tu numero factorial es: ${f}`;
+    });
+
+    function factorial(numero) {
+      if (numero == 0) {
+        return 1;
+      } else {
+        return (numero * factorial(numero - 1));
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

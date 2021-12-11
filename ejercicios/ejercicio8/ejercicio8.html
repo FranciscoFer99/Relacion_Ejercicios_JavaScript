@@ -1,0 +1,60 @@
+<!--Crear un  documento  HTML con su correspondiente javascript, similar a la mostrada a continuación, de forma que    si   
+   nos    ponemos    sobre    un    cuadrado,    el    fondo    de    la    misma    cambie    a    dicho    color.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div class="container bg-light my-5 py-4" style="width: auto">
+    <h1>Evento "On mouse Enter"On mouse Out" y fondos</h1>
+    <form action="">
+      <input type="color" name="" class="rojo" value="#FF0000">
+      <input type="color" name="" class="verde" value="#00FF11">
+      <input type="color" name="" class="amarillo" value="#FBFF00">
+      <input type="color" name="" class="gris" value="#5E5E5E">
+      <br><a href="../../index.html" class="btn btn-warning"> Volver</a>
+    </form>
+    <script>
+      document.forms[0].querySelector(".rojo").addEventListener("mouseenter", function () {
+        document.body.style.background = document.forms[0].querySelector(".rojo").value;
+      });
+      document.forms[0].querySelector(".rojo").addEventListener("mouseout", function () {
+        document.body.style.background = ("White");
+      });
+      document.forms[0].querySelector(".verde").addEventListener("mouseenter", function () {
+        document.body.style.background = document.forms[0].querySelector(".verde").value;
+      });
+      document.forms[0].querySelector(".verde").addEventListener("mouseout", function () {
+        document.body.style.background = ("White");
+      });
+      document.forms[0].querySelector(".amarillo").addEventListener("mouseenter", function () {
+        document.body.style.background = document.forms[0].querySelector(".amarillo").value;
+      });
+      document.forms[0].querySelector(".amarillo").addEventListener("mouseout", function () {
+        document.body.style.background = ("White");
+      });
+      document.forms[0].querySelector(".gris").addEventListener("mouseenter", function () {
+        document.body.style.background = document.forms[0].querySelector(".gris").value;
+      });
+      document.forms[0].querySelector(".gris").addEventListener("mouseout", function () {
+        document.body.style.background = ("White");
+      });
+
+
+    </script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

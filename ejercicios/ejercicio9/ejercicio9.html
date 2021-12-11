@@ -1,0 +1,89 @@
+<!--Realizar un documento HTML con su correspondiente código Javascriptque simule un conversor de distancia (Km a metros o viceversa) 
+  y un conversor de Peso (Kg a gramos o viceversa).Hay que tener en cuenta que en cuanto que hagamos clic en uno de los dos cuadros de 
+  texto del conversor de peso, el otro cuadro de texto debe ponerse en blanco (si es que hubiese algún contenido) y lo mismo para el 
+  conversor de distancia.Además, hay que comprobar que nos hayan metido al menos un dato para poder convertir..-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div class="container bg-light my-5 " style="width: auto">
+    <h1>Transformador</h1>
+    <form action="">
+      <input type="text" name="km" id="km" class="form-control" placeholder="KM" />
+      <button id="convertir1" class="btn-success mb-1 mt-1 rounded-pill">Convertir</button>
+      <input type="text" name="m" id="m" class="form-control" placeholder="M" />
+      <hr>
+      <input type="text" name="Kg" id="kg" class="form-control" placeholder="KG" />
+      <button id="convertir2" class="btn-success mt-1 mb-1 rounded-pill">Convertir</button>
+      <input type="text" name="g" id="g" class="form-control" placeholder="G" />
+      <a href="../../index.html" class="btn btn-warning mt-2 mb-2"> Volver</a>
+    </form>
+    <script>
+      km = document.getElementById("km");
+      m = document.getElementById("m");
+      kg = document.getElementById("kg");
+      g = document.getElementById("g");
+
+
+      m.addEventListener("click", function () {
+        m.value = "";
+        km.value = "";
+      });
+
+      km.addEventListener("click", function () {
+        km.value = "";
+        m.value = "";
+      });
+      kg.addEventListener("click", function () {
+        kg.value = "";
+        g.value = "";
+      });
+      g.addEventListener("click", function () {
+        g.value = "";
+        kg.value = "";
+      });
+
+      document.forms[0].querySelector("#convertir2").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (g.value == "") {
+          result = kg.value * 100;
+          g.value = result;
+        } else {
+          result = g.value / 100;
+          kg.value = result;
+        }
+      });
+
+      document.forms[0].querySelector("#convertir1").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (m.value == "") {
+          result = km.value * 1000;
+          m.value = result;
+        } else {
+          result = m.value / 1000;
+          km.value = result;
+        }
+
+        console.log(km);
+        console.log(m);
+      });
+
+    </script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!--Realizar una página HTML con su correspondiente javascript, en la que introduzcamos un texto en un textarea y 
+  muestre una ventana de salida en la que cuente el número de palabras, indique cuál es la primera y la última palabra, 
+  muestre todas las palabras del texto al revés, muestre todas las palabras ordenadas alfabéticamente y en orden inverso 
+  que haya en el cuadro de texto del textarea-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Document</title>
+
+</head>
+
+<body>
+ 
+  <div id="formLogin" class="container bg-light my-5 py-4 d-flex justify-content-center" style="width: 30%">
+    <form action="">
+      <label for="nomUsu" class="form-label">Nombre:</label><br>
+      <textarea name="" id="" cols="50" rows="10"></textarea><br>
+      <button type="submit" class="btn btn-success" id="enviar">
+        Enviar
+      </button>
+      <a href="../../index.html" class="btn btn-warning"> Volver</a>
+    </form>
+  </div>
+  <script>    
+  
+  
+  document.forms[0].querySelector("button").addEventListener("click", function(e){
+    e.preventDefault();
+    let texto = document.forms[0].querySelector("textarea").value;
+    let palabra = texto.split(' ');//Crea un array sin espacios
+    let palabrasReves = Array();
+    for(let i = 0 ; i <= palabra.length; i++){
+      palabrasReves[i] = palabra[palabra.length-i]
+    }
+    console.log(palabra)
+   ventana = window.open();
+   ventana.document.body.innerHTML = document.forms[0].querySelector("textarea").value;
+   ventana.document.body.innerHTML += `<br>Numero de palabras: ${palabra.length}`;
+   ventana.document.body.innerHTML += `<br>Primera palabra: ${palabra[0]}`;
+   ventana.document.body.innerHTML += `<br>Ultima palabra: ${palabra.pop()}`;
+   ventana.document.body.innerHTML += `<br>Colocadas al revés<br>:${palabrasReves}`;
+   ventana.document.body.innerHTML += `<br>Ordenadas de la A a la Z<br>:${palabrasReves.sort()}`;
+   ventana.document.body.innerHTML += `<br>Ordenadas de la Z a la A<br>:${palabrasReves.reverse()}`;
+
+    
+  });
+  
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!--Realizar una aplicación Web que simule el funcionamiento de una apuesta de la lotería primitiva, mostrando los númerosen su correspondiente 
+  tabla con una X. (Ojo: los números no se pueden repetir-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container bg-light my-5 py-4" style="width: auto;">
+      <table></table>
+      <a href="../../index.html" class="btn btn-warning"> Volver</a>
+    </div>
+
+    <script>
+
+      fila = new Array(7);
+      num = 1;
+      let table = document.querySelector("table");
+      for (let i = 0; i < 7; i++) {
+        let tr = document.createElement("tr");
+        table.appendChild(tr);
+        fila[i] = new Array(7);
+        for (let j = 0; j < 7; j++) {
+          let td = document.createElement("td");
+          td.innerText = num;
+          td.id = num;
+          tr.appendChild(td);
+          num++
+          
+        }
+      }
+      for (let i = 0; i < 6; i++) {
+       numero =  Math.round(Math.random() * 49);
+       if(document.getElementById(numero).style.background != "red"){
+      
+         document.getElementById(numero).style.background = "red";
+       }else{
+         while(document.getElementById(numero).style.background == "red"){
+          numero =  Math.round(Math.random() * 49);
+         }
+         document.getElementById(numero).style.background = "red";
+       }
+       console.log(numero);
+
+      }
+
+     
+      
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!--Realizar un documento HTML con su correspondiente código javascriptsimilar al mostrado a continuación 
+  que simule  el  funcionamiento de  una  página  de  autenticación  de  usuario mediante  usuario  y  
+  password  que  serían “admin” y “1234” respectivamente, de forma que si acertamos nos indique “Bienvenidos 
+  al sistema” y si fallamos“Usuario y/o contraseña incorrecta”.-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1></h1>
+    
+
+    <div id="formLogin" class="container bg-light my-5 py-4" style="width: 30%">
+      <form action="">
+        <label for="nomUsu" class="form-label">Nombre:</label>
+        <input type="text" name="usuario" id="Usuario" class="form-control" placeholder="Usuario"/>
+        <label for="passUsu" class="form-label">Contraseña:</label>
+        <input type="text" name="clave" id="Clave" class="form-control" placeholder="Contraseña"/><br />
+        <button type="submit" class="btn btn-success " id="enviar">
+          Entrar
+        </button>
+        <button type="submit" class="btn btn-outline-dark" id="limpiar">
+          Limpiar
+        </button>
+        <a href="../../index.html" class="btn btn-warning"> Volver</a>
+      </form>
+    </div>
+
+    <script>
+      usuario = document.getElementById("Usuario");
+      clave = document.getElementById("Clave");
+      titulo = document.getElementsByTagName("h1")[0];
+
+      document.getElementById("enviar").addEventListener("click", function (e) {
+           e.preventDefault();
+        if (usuario.value == "admin" && clave.value == "1234") {
+          titulo.innerText = "Bienvenido a Hogwarts";
+          console.log("usuarioCorrecto");
+        } else {
+          titulo.innerText = "";
+          titulo.innerText = "Usuario y/o Contraseña incorrecta";
+        }
+      
+      });
+
+      document.getElementById("limpiar").addEventListener("click", function () {
+        usuario.value = "";
+        clave.value = "";
+        titulo.innerText = "";
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

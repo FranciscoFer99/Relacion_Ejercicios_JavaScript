@@ -1,0 +1,90 @@
+<!--Crear los métodos mínimo común múltiplo (mcm) y máximo común divisor (mcd) y agregarlos 
+  al prototipo de la clase Math, sabiendo que ambos se calculan de la siguiente manera:mcd(a,b)=b 
+  si el resto de dividir a entre b es 0mcd(a,b)=mcd(b,a%b) si el resto de dividir a entre b no es 
+  0.mcm(a,b)=a*b/mcd(a,b)-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div class="container bg-light my-5 " style="width: 40%">
+    <h1 class="text-center my-3">Calcular MCD y MCM</h1>
+    <form>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" id="numero1" min="0" placeholder="Número 1">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" id="numero2" min="0" placeholder="Número 2">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <input type="button" class="btn btn-success mx-2" id="mcd" value="MCD">
+            <input type="button" class="btn btn-success mx-2" id="mcm" value="MCM">
+            <a href="../../index.html" class="btn btn-warning mx-2"> Volver</a>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-3">
+          <label for="res" class="form-label">Restultado:</label>
+          <input type="number" class="form-control text-center mb-2" id="restult" disabled>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    Math.mcd = function (a, b) {
+      let aux;
+      while (b !== 0) {
+        aux = b;
+        b = a % b;
+        a = aux;
+      }
+      return a;
+    }
+    Math.mcm = function (a, b) {
+      return (a * b) / Math.mcd(a, b);
+    }
+
+    let mcd = document.getElementById("mcd");
+    let mcm = document.getElementById("mcm");
+    let numero1 = document.getElementById("numero1");
+    let numero2 = document.getElementById("numero2");
+    let restult = document.getElementById("restult");
+
+
+    mcd.addEventListener("click", function () {
+      let mcd = Math.mcd(numero1.value, numero2.value);
+      restult.value = mcd;
+    });
+
+    mcm.addEventListener("click", function () {
+      let mcm = Math.mcm(numero1.value, numero2.value);
+      restult.value = mcm;
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

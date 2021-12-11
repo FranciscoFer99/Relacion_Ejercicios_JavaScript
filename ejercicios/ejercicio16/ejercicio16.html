@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="ejercicio16.js"></script>
+</head>
+
+<body>
+    <div id="formLogin" class="container bg-light my-5 py-4" style="width: 30%">
+        <form action="">
+            <h3 class="text-center">Calculadora de puntos</h3>
+            <div class="row">
+                <div class="col">
+                    <input type="number" id="x1" class="form-control mb-2" placeholder="x1" />
+                </div>
+                <div class="col">
+                    <input type="number" id="y1" class="form-control" placeholder="y1" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="number" id="x2" class="form-control" placeholder="x2" />
+                </div>
+                <div class="col">
+                    <input type="number" id="y2" class="form-control" placeholder="y2" />
+                </div>
+            </div> <br>
+            <div class="d-flex justify-content-around">
+                <button type="submit" class="btn btn-success" id="comparar">Comparar</button>
+                <button type="submit" class="btn btn-success" id="sumar">Sumar</button>
+                <button type="submit" class="btn btn-success" id="distancia">Distancia</button>
+                <button type="submit" class="btn btn-success" id="borrar">Borrar</button>
+                <a href="../../index.html" class="btn btn-warning"> Volver</a>
+            </div>
+            <div>
+                <p id="resultado" class="mt-4"></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let x1 = document.getElementById("x1");
+        let y1 = document.getElementById("y1");
+        let x2 = document.getElementById("x2");
+        let y2 = document.getElementById("y2");
+        let botonComparar = document.getElementById("comparar");
+        let botonSumar = document.getElementById("sumar");
+        let botonDistancia = document.getElementById("distancia");
+        let botonBorrar = document.getElementById("borrar");
+        let resultado = document.getElementById("resultado");
+
+        botonComparar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos()) {
+                coordenadas = new Coordenadas(x1.value, y1.value);
+                comparacion = coordenadas.iguales(x2.value, y2.value);
+                resultado.innerText = comparacion;
+            }
+        });
+
+        botonSumar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos()) {
+                coordenadas = new Coordenadas(x1.value, y1.value);
+                suma = coordenadas.sumar(x2.value, y2.value);
+                resultado.innerText = "La suma de los puntos es el punto (" + suma + ")";
+            }
+        });
+
+        botonDistancia.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos()) {
+                coordenadas = new Coordenadas(x1.value, y1.value);
+                distancia = coordenadas.distancia(x2.value, y2.value);
+                resultado.innerText = "La distancia entre los puntos es de "+ distancia;
+            }
+        });
+
+        botonBorrar.addEventListener("click", function (e) {
+            e.preventDefault();
+            x1.value = "";
+            y1.value = "";
+            x2.value = "";
+            y2.value = "";
+            resultado.innerText = "";
+        });
+
+        function comprobarCampos() {
+            if (x1.value != "" && y1.value != "" && x2.value != "" && y2.value != "") {
+                return true;
+            } else {
+                resultado.innerText = "No se han introducido bien los valores";
+                return false;
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

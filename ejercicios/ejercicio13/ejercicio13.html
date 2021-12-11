@@ -1,0 +1,43 @@
+<!--Crear una aplicación Web que muestre el texto “Velocidad 0”, de forma que al pulsar el cursor arriba
+   incremente la velocidad en 1 y alpulsar el cursor abajo decremente la misma en 1, teniendo en cuenta 
+   que la velocidad nunca puede estar por debajo de 0 ni por encima de 100-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <h1>Velocidad <span>0</span></h1>
+  <a href="../../index.html" class="btn btn-warning mx-1"> Volver</a>
+
+  <script>    
+
+    document.body.addEventListener("keydown", function(e){
+      if(e.key=='ArrowUp'){
+        if(document.querySelector("span").innerText<100){
+          document.querySelector("span").innerText-= -1
+        }
+      }
+      if(e.key=='ArrowDown'){
+        if(document.querySelector("span").innerText>0){
+          document.querySelector("span").innerText-= 1
+        }
+      }
+      
+    })
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

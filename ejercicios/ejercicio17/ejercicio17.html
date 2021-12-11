@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="ejercicio17.js"></script>
+</head>
+
+<body>
+    <div id="formLogin" class="container bg-light my-5 py-4" style="width: 35%">
+        <form action="">
+            <h3>Calculadora de fracciones</h3>
+            <div class="row">
+                <div class="col">
+                    <label for="n1" class="form-label">Numerador 1:</label>
+                    <input type="number" id="n1" class="form-control" placeholder="numerador" />
+                </div>
+                <div class="col">
+                    <label for="d1" class="form-label">Denominador 1:</label>
+                    <input type="number" id="d1" class="form-control" placeholder="denominador" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="n2" class="form-label">Numerador 2:</label>
+                    <input type="number" id="n2" class="form-control" placeholder="numerador" />
+                </div>
+                <div class="col">
+                    <label for="d2" class="form-label">Denominador 2:</label>
+                    <input type="number" id="d2" class="form-control" placeholder="denominador" />
+                </div>
+            </div> <br>
+            <div class="d-flex justify-content-around">
+                <button type="submit" class="btn btn-dark" id="mostrar">Mostrar</button>
+                <button type="submit" class="btn btn-dark" id="simplificar">Simplificar</button>
+                <button type="submit" class="btn btn-outline-dark" id="borrar">Borrar</button>
+                <button type="submit" class="btn btn-dark" id="multiplicar">Multiplicar</button>
+                <button type="submit" class="btn btn-dark" id="dividir">Dividir</button>
+                <a href="../../index.html" class="btn btn-warning"> Volver</a>
+            </div>
+            <div>
+                <p id="resultado" class="mt-4"></p>
+                <p id="resultado2" class="mt-4"></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        let x1 = document.getElementById("n1");
+        let y1 = document.getElementById("d1");
+        let x2 = document.getElementById("n2");
+        let y2 = document.getElementById("d2");
+        let botonMostrar = document.getElementById("mostrar");
+        let botonSimplificar = document.getElementById("simplificar");
+        let botonMultiplicar = document.getElementById("multiplicar");
+        let botonDividir = document.getElementById("dividir");
+        let botonBorrar = document.getElementById("borrar");
+        let resultado = document.getElementById("resultado");
+        let resultado2 = document.getElementById("resultado2");
+
+        botonMostrar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos()) {
+                if (comprobarCampos1()) {
+                    fraccion1 = new Fraccion(n1.value, d1.value);
+                    mostrar1 = fraccion1.imprimirFraccion(n1.value, d1.value);
+                    resultado.innerText = "-Primera fracción: " + mostrar1;
+                }
+
+                if (comprobarCampos2()) {
+                    fraccion2 = new Fraccion(n2.value, d2.value);
+                    mostrar2 = fraccion2.imprimirFraccion(n2.value, d2.value);
+                    resultado2.innerText = "-Segunda fracción: " + mostrar2;
+                }
+            }
+        });
+
+        botonSimplificar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos()) {
+                if (comprobarCampos1()) {
+                    fraccion1 = new Fraccion(n1.value, d1.value);
+                    mostrar1 = fraccion1.simplificar(n1.value, d1.value);
+                    resultado.innerText = "-Primera fracción simplificada: " + mostrar1;
+                }
+
+                if (comprobarCampos2()) {
+                    fraccion2 = new Fraccion(n2.value, d2.value);
+                    mostrar2 = fraccion2.simplificar(n2.value, d2.value);
+                    resultado2.innerText = "-Segunda fracción simplificada: " + mostrar2;
+                }
+            }
+        });
+
+        botonMultiplicar.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos1() && comprobarCampos2()) {
+                fraccion1 = new Fraccion(n1.value, d1.value);
+                fraccion2 = new Fraccion(n2.value, d2.value);
+                multiplicacion = fraccion1.multiplicarF(fraccion2);
+                resultado.innerText = "La multiplicación de las fracciones es: " + multiplicacion;
+                resultado2.innerText = "";
+            } else {
+                resultado.innerText = "No se han introducido bien los valores";
+            }
+        });
+
+        botonDividir.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (comprobarCampos1() && comprobarCampos2()) {
+                fraccion1 = new Fraccion(n1.value, d1.value);
+                fraccion2 = new Fraccion(n2.value, d2.value);
+                multiplicacion = fraccion1.dividirF(fraccion2);
+                resultado.innerText = "La división de las fracciones es: " + multiplicacion;
+                resultado2.innerText = "";
+            } else {
+                resultado.innerText = "No se han introducido bien los valores";
+            }
+        });
+
+        botonBorrar.addEventListener("click", function (e) {
+            e.preventDefault();
+            n1.value = "";
+            d1.value = "";
+            n2.value = "";
+            d2.value = "";
+            resultado.innerText = "";
+            resultado2.innerText = "";
+        });
+
+        function comprobarCampos() {
+            if (comprobarCampos1() || comprobarCampos2()) {
+                return true;
+            } else {
+                resultado.innerText = "No se han introducido bien los valores";
+                return false;
+            }
+        }
+
+        function comprobarCampos1() {
+            if (n1.value != "" && d1.value != "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function comprobarCampos2() {
+            if (n2.value != "" && d2.value != "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
